@@ -31,4 +31,16 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 <html>
 
-```fkfof
+```{r}
+a <-45
+87->s
+```
+
+```{r}
+k<-29
+```
+
+```{r}
+79+k-a
+```
+
