@@ -27,9 +27,193 @@ plot(pressure)
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
+## 引入套件 "stringr"
 ```{r}
+library(stringr)
+```
+
+##subset
+```{r}
+course <- c("個體經濟學","投資學","總體經濟學")
+course
+str_subset(course,"經濟學")
+str_detect(course,"學")
 
 ```
+
+```{r}
+brand<- c("apple","Google","samsung")
+brand
+str_sub(brand,1,5)
+str_subset(brand,"apple")
+str_detect(brand,"le")
+```
+```{r}
+studentID<-c(
+  '410177115','410176080','410174233','410177011','410182045','410176014')
+majorsubject<-str_sub(studentID,5,6)
+year<-str_sub(studentID,2,4)
+```
+
+##str_c
+```{r}
+month <- c("3","4","2")
+day <- c("11","5","7")
+char1 <- c("月","月","月")
+char2 <- c("日","日","日") 
+month
+char1
+day 
+char2
+str_c(month,char1,day,char2)
+```
+##不想打重複的字可以
+```{r}
+str_c(month,c("月"),day,c("日"))
+```
+##sep = seperation
+```{r}
+str_c(month,day,sep="/")
+```
+
+```{r}
+dates <- c("3-11", "4-5",  "2-7")
+str_split(dates,"-")
+str_replace(dates,"-","月")
+```
+```{r}
+dates2 <- c("3-11-2019", "4-5-2017",  "2-7-2015")
+dates2
+str_replace(dates2,"-","/") ## replace 只會替補第一次出現的符號
+str_replace_all(dates2,"-","/")  ##replace_al 回替補全部出現的符號
+```
+```{r}
+library(readr)
+githubData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/githubData.csv")
+username <- githubData$`GitHub username`[11:16]
+reponame <- githubData$`GitHub repo name`[11:16]
+str_c("https://github.com",username,reponame,sep = "/")
+```
+##  對照: https://github.com/tpemartin/107-2-inclass-practice
+
+## 綜合練習
+
+## 1.
+```{r}
+library(readr)
+filmVotingData <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/%E7%AC%AC%E4%B8%89%E5%B1%86%E7%B6%93%E6%BF%9F%E6%92%AD%E5%AE%A2%E7%AB%B6%E8%B3%BD%E5%8F%83%E8%B3%BD%E4%BD%9C%E5%93%81%E6%8A%95%E7%A5%A8%E7%B5%90%E6%9E%9C%E6%A8%A3%E6%9C%AC%20-%20Sheet1.csv")
+birthday<-filmVotingData$`出生西元年月日（驗證本人用）`
+```
+
+```{r}
+head(birthday)
+year<-str_sub(birthday,1,4)
+month<-str_sub(birthday,5,6)
+day<-str_sub(birthday,7,8)
+head(str_c("西元",year,"年",month,"月",day,"日"))
+```
+
+```{r}
+民國年月<-c("099/01","099/02","099/03")
+```
+
+```{r}
+library(lubridate)
+chineseyear<-str_sub(民國年月,2,3)
+chineseyear
+chineseyear<-as.numeric(chineseyear)
+year1<-chineseyear+1911
+class(chineseyear)
+```
+##這裡要把數字改成字串(雖然不影響答案,電腦會自動幫你轉成字串)
+
+```{r}
+chineseyear<-as.character(chineseyear)
+class(chineseyear)
+year1
+month1<-str_sub(民國年月,5,6)
+answer<-str_c("西元",year1,"年",month1,"月") ##可以考慮把多餘的0去掉
+ANS2<-str_replace(answer,"年0","年")
+answer
+ANS2
+```
+
+##### 第 6 章 Vectors
+
+##Atomic vector範例
+```{r}
+a<-c(1:3)
+typeof(a)
+a
+```
+
+```{r}
+aWithNames <- c(
+  a1=1,
+  a2=2,
+  a3=3
+)
+typeof(a)
+aWithNames
+```
+###    LIST 
+###    內可包含各種資料
+```{r}
+b1<-list("a","b",c(1:10),TRUE)
+typeof(b1)
+b1
+```
+
+```{r}
+b2<-list(
+  第一個="a",
+  第二個="b",
+  第三個=c(1:10))
+b2
+```
+```{r}
+playlist<-list(NO1="funk",NO2="jazz",NO3="pop")
+playlist
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
