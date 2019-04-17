@@ -88,10 +88,21 @@ plasticContainer[["greenBox"]][[1]]
 studentRecord[["姓名"]]
 studentRecord[["學年平均成績"]][[3]]
 ```
-
+##取出來的子元素保有母元素的class
 ```{r}
 plasticContainer[c("greenBox","redBox")] 
 plasticContainer[c(1,2)]
+```
+```{r}
+plasticContainer
+
+extract1 <- plasticContainer[c("greenBox")]
+extract1
+extract2 <- plasticContainer[[c("greenBox")]]
+extract2
+
+extract1[[1]][[1]]
+extract2[[1]]
 ```
 
 
