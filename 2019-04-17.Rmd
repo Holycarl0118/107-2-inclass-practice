@@ -109,6 +109,7 @@ extract1[[1]][[1]]
 extract2[[1]]
 ```
 ##用"物件"[c(T,F,T,F)] 取捨 list中的元素 T=保留 F=捨棄
+
 ```{r}
 plasticContainer
 
