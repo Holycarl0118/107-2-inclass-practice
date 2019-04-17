@@ -43,8 +43,19 @@ studentRecord <-
 
 studentRecord
 ```
+##物件+兩個中括號 == 顯示括號內元素的內容
+```{r}
+plasticContainer <- list(
+  greenBox=c("paper","scissor"),     # location 1
+  redBox=c(1,3,2.5),               # location 2
+  blueBox=c(TRUE,FALSE,TRUE,TRUE)    # location 3
+)
+```
 
-
+```{r}
+plasticContainer[[1]]
+plasticContainer[["redBox"]]
+```
 
 
 
