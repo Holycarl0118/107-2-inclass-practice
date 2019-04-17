@@ -93,16 +93,31 @@ studentRecord[["學年平均成績"]][[3]]
 plasticContainer[c("greenBox","redBox")] 
 plasticContainer[c(1,2)]
 ```
+##取list中的一個元素: 2個中括號跟1個中括號的不同
 ```{r}
 plasticContainer
 
-extract1 <- plasticContainer[c("greenBox")]
+extract1 <- plasticContainer[c("greenBox")] 
 extract1
 extract2 <- plasticContainer[[c("greenBox")]]
 extract2
 
+class(extract1)
+class(extract2)
+
 extract1[[1]][[1]]
 extract2[[1]]
+```
+##用"物件"[c(T,F,T,F)] 取捨 list中的元素 T=保留 F=捨棄
+```{r}
+plasticContainer
+
+length(plasticContainer)
+plasticContainer[c(T,F,T)] ##取第一,三個元素 捨掉第二個元素
+```
+```{r}
+成績單
+成績單[c(FALSE,TRUE,TRUE)]
 ```
 
 
