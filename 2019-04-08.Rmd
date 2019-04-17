@@ -1,0 +1,490 @@
+---
+title: "2019-04/08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+#5-4 Logical Operators
+
+```{r}
+x5 <- c("台北市","新北市","高雄市")
+greatTaipei <- c("台北市","新北市")
+
+x5 %in% greatTaipei
+!(x5 %in% greatTaipei)
+```
+
+```{r}
+y5 <- c("女","男","女")
+
+y5
+y5=="女"
+!(y5=="女")
+```
+
+> 圈圈是要圈出"retional Operation"為真的元素在物件內的位置
+
+```{r}
+x5
+greatTaipei
+y5
+x5 %in% greatTaipei
+y5 == "女"
+(x5 %in% greatTaipei) & (y5=="女")
+```
+## "&" ->  兩個結果都是正確的才是TRUE 意指 同時為greatTaipei 又是 女性 才被認定是TRUE I
+
+
+```{r}
+(x5%in%greatTaipei)
+(y5 == "女")
+(x5 %in% greatTaipei) | (y5=="女")
+```
+## | -> 滿足其中一個條件 也就是 "或"
+
+##很多時候我們想知道向量中第幾筆元素資料為TRUE, 此時可用which():
+## which -> 第幾筆資料滿足()內的條件 ==> in this case: 1 2 3 個資料都滿足
+```{r}
+which((x5 %in% greatTaipei) | (y5=="女"))
+```
+
+## xor ==> 只滿足其中一個條件 不能同時符合或完全不符合
+```{r}
+x5%in%greatTaipei
+y5 == "女"
+xor(x5 %in% greatTaipei, y5=="女")
+```
+
+
+
+```{r}
+library(readr)
+exData2 <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/exData2.csv")
+date <- as.character(exData2$期間)
+currency <- exData2$幣別
+exchangeRate <- exData2$匯率
+``` 
+```{r}
+class(date)
+```
+
+
+
+```{r}
+head(date)
+```
+
+```{r}
+library(lubridate)
+date <- ymd(date)
+```
+
+```{r}
+class(date)
+```
+
+1980-08-01之後的資料有多少筆。
+
+```{r}
+head(as.integer(date))
+as.integer(ymd("1980-08-01"))
+head(date >= ymd("1980-08-01"))
+```
+
+
+```{r}
+After19800801<-date >= ymd("1980-08-01")
+sum(After19800801)
+```
+
+
+幣別為“歐元USD/EUR”的資料有多少筆。
+```{r}
+head(currency)
+```
+```{r}
+head(currency == "歐元USD/EUR")
+isEuro <- currency == "歐元USD/EUR"
+sum(isEuro)
+```
+
+
+
+exchangeRate有多少筆NA。
+
+```{r}
+isExchangeRate <- 
+  is.na(exchangeRate)
+
+sum(isExchangeRate)
+```
+
+排除NA後，幣別為“歐元USD/EUR”的資料有多少筆。
+
+```{r}
+NotNA <- !is.na(exchangeRate)
+isEuro <- currency == "歐元USD/EUR"
+sum(NotNA & isEuro)
+```
+
+也可以不存成NotNA isEuro 的寫法
+
+```{r}
+SatisfyBoth <- !is.na(exchangeRate) & currency == "歐元USD/EUR"
+sum(SatisfyBoth)
+```
+
+請先執行以下程式得到grade （科目成績）, courseType（課程為必/選或通識）, major（學系），studentID（學號）物件，這些物件每一筆資料（即每個元素）是一位學生在一個科目的成績：
+
+```{r}
+library(readr)
+transcriptDataFinal <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/transcriptDataFinal.csv")
+courseType <- transcriptDataFinal$`必選修類別（必∕選∕通）`
+major <- transcriptDataFinal$學系
+studentID <- transcriptDataFinal$學號
+grade <- transcriptDataFinal$學期成績
+```
+
+有多少筆資料是來自經濟學系。
+
+```{r}
+head(major)
+sum(major == "經濟學系")
+```
+請問學號“5bdS6977b”同學修了多少課。
+
+```{r}
+sum(studentID == "5bdS6977b")
+```
+請問學號“5bdS6977b”有多少科成績及格
+
+```{r}
+sum(
+  studentID == "5bdS6977b" &
+  grade >= 60)
+```
+有多少筆資料來自經濟學系學生且為選修課。
+
+```{r}
+
+sum(
+  major == "經濟學系" &
+  courseType == "選"
+)
+```
+在經濟學系學生且必修課程中，成經不及格佔多少比例。
+
+```{r}
+FailureStudent<-major == "經濟學系" &
+    courseType == "必" &
+    grade < 60
+sum(
+  major == "經濟學系" &
+    courseType == "必" &
+    grade < 60
+)
+```
+```{r}
+ALLTHESTUDENT<-major == "經濟學系" &
+    courseType == "必" 
+
+sum(major == "經濟學系" &
+    courseType == "必" )
+```
+```{r}
+sum(FailureStudent)/sum(ALLTHESTUDENT)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

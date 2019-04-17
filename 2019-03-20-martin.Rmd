@@ -9,6 +9,15 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+```{r}
+aVector<-c(5,6,7)
+a2Vector<-c(5L,6L,7L)
+class(aVector)
+```
+
+
+
 ```{r}
 dialogue <- c('小明說："明天不用上課。"',
                '小花說："真的嗎？"')
