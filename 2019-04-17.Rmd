@@ -43,6 +43,19 @@ studentRecord <-
 
 studentRecord
 ```
+```{r}
+MLBstanding <-list(
+  Yankees="10W6L",
+  Redsoxs="10W7L",
+  bluejay="8W6L",
+  Rays="4W6L"
+)
+MLBstanding
+```
+
+
+
+
 ##物件+兩個中括號 == 顯示括號內元素的內容
 ```{r}
 plasticContainer <- list(
@@ -57,9 +70,29 @@ plasticContainer[[1]]
 plasticContainer[["redBox"]]
 ```
 
+```{r}
+plasticContainer[["greenBox"]][[1]]
+```
 
+```{r}
+成績單 <- c(
+  個經=90,
+  總經=77,
+  統計=88
+)
+成績單[[1]]
+成績單[["個經"]]
+```
 
+```{r}
+studentRecord[["姓名"]]
+studentRecord[["學年平均成績"]][[3]]
+```
 
+```{r}
+plasticContainer[c("greenBox","redBox")] 
+plasticContainer[c(1,2)]
+```
 
 
 
