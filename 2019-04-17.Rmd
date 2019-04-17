@@ -121,6 +121,21 @@ plasticContainer[c(T,F,T)] ##取第一,三個元素 捨掉第二個元素
 成績單[c(FALSE,TRUE,TRUE)]
 ```
 
+##6.4.3 $. 'extraction'
+
+##只能用在list vector，且
+##只能取「一個」元素，其中
+##一定為「元素名稱」。
+```{r}
+plasticContainer$greenBox
+plasticContainer[["greenBox"]]
+成績單[["個經"]]
+studentRecord$性別
+```
+```{r}
+library(httr)
+library(stringr)
+```
 
 
 
