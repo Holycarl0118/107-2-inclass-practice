@@ -39,14 +39,32 @@ matmat<-matrix(
   c(1:10),5,2
 )
 matmat
+Mat2 <- matrix(
+  c("a","b","c","d"), 2, 2
+)
+Mat2
 ```
 
 ```{r}
 Mat1[[4]]
 class(Mat1[[4]])
 ```
+##如何直接列表
+```{r}
+StuDF <- data.frame(
+  學號=c(172,214,322,425,517),
+  姓名=c("小明","大雄","胖虎","小新","大白"),
+  成績=c(80,60,90,70,50)
+  )
+StuDF 
+StuDF[[2]][[3]]
+```
 
-
+```{r}
+class(StuDF)
+typeof(StuDF)
+class(StuDF[[2]])
+```
 
 
 
