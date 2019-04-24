@@ -49,6 +49,17 @@ Mat2
 Mat1[[4]]
 class(Mat1[[4]])
 ```
+
+```{r}
+StuList <- list(
+  學號=c(172,214,322,425,517),
+  姓名=c("小明","大雄","胖虎","小新","大白"),
+  成績=c(80,60,90,70,50)
+  )
+StuList 
+```
+
+
 ##如何直接列表
 ```{r}
 StuDF <- data.frame(
@@ -64,6 +75,20 @@ StuDF[[2]][[3]]
 class(StuDF)
 typeof(StuDF)
 class(StuDF[[2]])
+##data.frame()遇到變數輸入為character class時，內定會被轉成factor。
+class(StuDF[["姓名"]])
+```
+
+##取消內定character為factor的方式
+```{r}
+class(StuList)
+as.data.frame(StuList) -> StuDF3
+
+class(StuDF3)
+StuDF3
+as.data.frame(StuList,stringsAsFactors = F) -> StuDF4
+class(StuDF4)
+StuDF4
 ```
 
 
