@@ -127,6 +127,10 @@ EXAMPLE<-matrix(
 EXAMPLE
 ```
 
+```{r}
+matObj1[c(T,F,F,T,F),c(F,T,T)]
+```
+
 
 
 
