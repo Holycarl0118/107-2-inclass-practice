@@ -81,18 +81,24 @@ class(StuDF[["姓名"]])
 
 ##取消內定character為factor的方式
 ```{r}
-class(StuList)
 as.data.frame(StuList) -> StuDF3
 
-class(StuDF3)
 StuDF3
+```
+```{r}
+class(StuDF3)
+```
+
+```{r}
 as.data.frame(StuList,stringsAsFactors = F) -> StuDF4
-class(StuDF4)
 StuDF4
 ```
 
-
-
+```{r}
+class(StuDF4)
+class(StuDF3[["姓名"]])
+class(StuDF4[["姓名"]])
+```
 
 
 
