@@ -54,10 +54,25 @@ invoiceList
 
 ymd_hms_tzChange<-function(x,y,z){
   Fromdatetime<-ymd_hms(x,tz=y)
-Todatetime<-with_tz(Fromdatetime,tz=z)
+Todatetime<-with_tz(Fromdatetime,tzone=z)##Todatetime<-with_tz(Fromdatetime,tz=z)(X)
 return(Todatetime)
 }
 ymd_hms_tzChange("1907-02-21 12:05:22","America/New_York","Asia/Taipei")
+```
+
+```{r}
+library(stringr)
+sample(99:103,15,replace = T)-> yy
+sample(1:12,15,replace=T)-> mm
+str_c("民國",str_pad(yy,3,"left","0"),"年",mm,"月") -> twDates
+```
+
+
+```{r}
+yyyy<-as.integer(str_extract(twDates,"(?<=(民國))[:digit:]+"))+1911
+mm<-str_extract(twDates,"[:digit:]+(?=月)")
+yyyymmdd <- ymd(str_c(yyyy,mm,"01",sep="-"))
+yyyymmdd
 ```
 
 
@@ -67,13 +82,26 @@ ymd_hms_tzChange("1907-02-21 12:05:22","America/New_York","Asia/Taipei")
 
 
 
+```{r}
+date_convert_twYM<-function(x){
+  yyyy<-as.integer(str_extract(x,"(?<=(民國))[:digit:]+"))+1911
+mm<-str_extract(x,"[:digit:]+(?=月)")
+yyyymmdd <- ymd(str_c(yyyy,mm,"01",sep="-"))
+return(yyyymmdd)
+}
 
+```
 
-
-
-
-
-
+```{r}
+date_convert_twYM<-function(x,y=01){
+  yyyy<-as.integer(str_extract(x,"(?<=(民國))[:digit:]+"))+1911
+mm<-str_extract(x,"[:digit:]+(?=月)")
+yyyymmdd <- ymd(str_c(yyyy,mm,y,sep="-"))
+return(yyyymmdd)
+}
+date_convert_twYM("民國099年10月")
+date_convert_twYM(twDates,y=05)
+```
 
 
 
