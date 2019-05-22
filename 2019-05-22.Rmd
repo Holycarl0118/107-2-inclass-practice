@@ -28,9 +28,37 @@ plot(pressure)
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 ```{r}
-
+library(lubridate)
+library(readr)
+invoiceList <- read_csv("https://raw.githubusercontent.com/tpemartin/github-data/master/invoiceList.csv",
+col_types = cols(訂單時間.以訂單時區顯示. = col_character()))
+names(invoiceList)[[2]] <- "訂單時區之下單時間"
 ```
 
+```{r}
+NYlogical<-invoiceList$訂單時區=="America/New_York"
+
+TPlogical<-invoiceList$訂單時區=="Asia/Taipei"
+
+invoiceList$NYlogical<- NYlogical
+invoiceList$TPlogical<- TPlogical
+
+TPdatetime<-ymd_hms(invoiceList$訂單時區之下單時間[TPlogical],tz="Asia/Taipei")
+
+invoiceList$UTC時間[tplogical]<-with_tz(TPdatetime,tz="UTC")
+
+invoiceList
+```
+
+```{r}
+
+ymd_hms_tzChange<-function(x,y,z){
+  Fromdatetime<-ymd_hms(x,tz=y)
+Todatetime<-with_tz(Fromdatetime,tz=z)
+return(Todatetime)
+}
+ymd_hms_tzChange("1907-02-21 12:05:22","America/New_York","Asia/Taipei")
+```
 
 
 
