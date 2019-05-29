@@ -120,14 +120,41 @@ gpa_fun <- function(studentID){
     sum(subSample$學分數) -> GPA
   if(studentID%in%transcriptDataFinal$學號){
     return(GPA)
-  }else{message(("查無此學號"))
+  }else{message(("NO SUCH ID"))
   }
 }
 gpa_fun("92aS67fee") # 顯示82.85276
 gpa_fun("aa829838s") # 查無此學號
 ```
 
+```{r}
+supply_fun4 <- function(P,a,b){
+  Qs <- a+b*P
+  if(P < 0) {
+    message("P不能為負值") # 在螢幕出現的「錯誤」提示，沒有輸出任何值
+  } else if(P < -a/b) {
+    message("P必需大於等於",-a/b,"(即-a/b值)")
+  } else {
+    return(Qs)
+  }
+}
+supply_fun4(P=-1,-3,1)
+supply_fun4(P=2,-3,1)
+supply_fun4(P=3,-3,1)
+```
 
+```{r}
+ fizzbuzz<-function(a){
+ 
+  if(a%%3==0 & a%%5==0)
+    {print("fizzbuzz")}
+  else if(a%%3==0)
+     {print("fizz")}
+  else if(a%%5==0)
+     {print("buzz")}
+  else{print(a)}
+ }
+```
 
 
 
