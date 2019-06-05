@@ -50,6 +50,7 @@ MLBstanding <-list(
   bluejay="8W6L",
   Rays="4W6L"
 )
+
 MLBstanding
 ```
 
@@ -92,6 +93,7 @@ studentRecord[["學年平均成績"]][[3]]
 ```{r}
 plasticContainer[c("greenBox","redBox")] 
 plasticContainer[c(1,2)]
+class(plasticContainer[c(1,2)])
 ```
 ##取list中的一個元素: 2個中括號跟1個中括號的不同
 ```{r}
@@ -130,6 +132,7 @@ plasticContainer[c(T,F,T)] ##取第一,三個元素 捨掉第二個元素
 plasticContainer$greenBox
 plasticContainer[["greenBox"]]
 成績單[["個經"]]
+成績單[[1]]
 studentRecord$性別
 ```
 ```{r}

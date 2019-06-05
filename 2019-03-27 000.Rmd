@@ -48,7 +48,7 @@ twDateTime
 
 
 ```{r}
-LisbonDateTime <- with_tz(twDateTime,tzone="Europe/Lisbon")
+LisbonDateTime <- with_tz(twDateTime,tz="Europe/Lisbon")
 
 LisbonDateTime
 ```
@@ -68,6 +68,9 @@ Object0<-ymd("2017-04-11")
 Object0 
 Object1<-mdy("March 27, 2019")
 Object1
+as.integer(ymd("1970-01-01"))
+as.integer(ymd("1970-01-02"))
+as.integer(ymd("2019-03-11"))
 ```
 
 
@@ -77,8 +80,13 @@ b <- c(0.5, 12, 2)
 aL <- c(1L, 5L, -3L)
 bL <- c(-2L, -4L, 8L)
 a+b
+a+bL
 aaL <- aL-bL
+aaL
+class(aL)
+class(a+b)
 class(aaL)
+class(a+bL)
 ```
 
 ```{r}
@@ -88,6 +96,7 @@ x2 <- c(1,5,10)
 y2 <- c(-1,5,20)
 x3 <- c("小明","小花")
 y3 <- c("小明","小華")
+class(y3)
 
 x == y
 x <= y

@@ -49,11 +49,20 @@ k<-29
 ```{r}
 a<-5
 as<-48
+ab<-"你好"
+class(ab)
+abc<-c("你好","How are you")
+class(abc)
+dialogue <- c('小明說："明天不用上課。"',
+               '小花說："真的嗎？"')
+
+cat(dialogue, sep="\n")
 ```
 
 ```{r}
 afector<-c(5,6,7)
 akfector<-c(6,9,10)
+class(akfector)
 ```
 
 

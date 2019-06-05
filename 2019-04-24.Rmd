@@ -29,12 +29,12 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 
 ```{r}
-class(Mat1)
-typeof(Mat1)
 Mat1 <- matrix(
   c(1:6), 2,3
 )
 Mat1
+typeof(Mat1)
+
 matmat<-matrix(
   c(1:10),5,2
 )
@@ -103,6 +103,7 @@ class(StuDF4[["姓名"]])
 ```{r}
 LETTERS # R內設元素值為英文字母群的character vector
 chosenLETTERS <- LETTERS[1:15]
+chosenLETTERS[6]
 matObj1 <- matrix(chosenLETTERS,5,3)
 matObj1
 ```
@@ -115,7 +116,7 @@ matObj1[8]
 ```{r}
 matObj1
 matObj1[3,2] 
-matObj1[c(F,F,TRUE,F,F),c(F,TRUE,F)]
+matObj1[c(F,F,TRUE,F,F),c(2,3)]
 ```
 
 ```{r}

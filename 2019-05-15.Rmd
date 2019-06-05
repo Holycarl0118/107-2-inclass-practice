@@ -53,6 +53,7 @@ StuDF2
 ```{r}
 colnames(StuDF2)
 names(StuDF2)
+row.names(StuDF2)
 ```
 
 ```{r}
@@ -97,8 +98,9 @@ b <- list(
   元素2="Hello",
   元素3=TRUE
 )
-b$元素2<-("Hi")
+b$元素2<-c("Hi","hello")
 b$新成員<-c(2,5,1)
+b$元素3<-c("FALSE")
 b
 ```
 
