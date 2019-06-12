@@ -8,6 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## R Markdown
+`
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
@@ -28,9 +29,45 @@ plot(pressure)
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
 
+```{r}
+load(url("https://www.dropbox.com/s/duh5aaqgl2f5m3z/loopTranscriptData.Rda?raw=1"))
+studentIds <- unique(transcriptDataFinal$學號) # 全部可能學號
+studentIds5 <- studentIds[1:5] # 前5筆學號
+```
+##seq_along()依input物件元素個數產生對應的整數向量，相當於c(1:length(input))
+```{r}
+for(i in seq_along(studentIds5)){
+  print(studentIds5[[i]])
+}
+```
 
 
 
+```{r}
+gmailAddress <- c(
+  "tim@gmail.com",
+  "anita",
+  "yellen@gmail.com",
+  "huang@gmail.com"
+)
+```
+
+
+
+##seq_along 範例
+```{r}
+library(stringr)
+for(i in seq_along(gmailAddress)){
+  if(str_detect(gmailAddress[[i]],"gmail.com")){
+    print(gmailAddress[[i]])}
+  else{
+   print( str_c(gmailAddress[[i]],"gmail.com"))
+  }
+}
+
+```
+
+##完成以下body程序： 令i <- 1，檢查gmailAddress中「第i個」元素，若沒有寫“@gmail.com”則加上。
 
 
 
