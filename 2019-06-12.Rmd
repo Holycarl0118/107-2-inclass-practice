@@ -171,15 +171,62 @@ saveList[[3]] <- list(姓名="小明",電話="02-86741111")
 saveList # 儲存後
 ```
 
+```{r}
+load(url("https://www.dropbox.com/s/duh5aaqgl2f5m3z/loopTranscriptData.Rda?raw=1"))
+studentIds <- unique(transcriptDataFinal$學號) # 全部可能學號
+studentIds5 <- studentIds[1:5] # 前5筆學號
+```
 
+##任務: 將transcriptDataFinal資料中每個學號的平均成績算出來並儲存
 
+### 0. saving container
+```{r}
+saveGPA5<-vector("numeric",length(studentIds5))
+saveGPA5
+```
 
+###1. sequence source
+```{r}
+studentIds5
+```
 
+###2. body
+```{r}
+gpa_fun(studentIds5[[i]])->saveGPA5[[i]]
+```
 
+### 3. for loop
+```{r}
+saveGPA5<-vector("numeric",length(studentIds5))
+for (i in seq_along(studentIds5[[i]])) {
+  
+}
+```
 
+###範例:任務0
+```{r}
+saveCommitAuthor<-vector("character",length(commitHistory))
+saveCommitAuthor
+```
+##範例:任務一:sequence resource
+```{r}
+commitHistory
+```
 
+##範例:任務二:body
+```{r}
+saveCommitAuthor[[i]]<-commitHistory[[i]]$commit$committer$name
+```
 
+##範例:任務三:
+```{r}
+saveCommitDate<-vector("character",length(commitHistory))
+for(i in seq_along(commitHistory)){
+  saveCommitAuthor[[i]]<-commitHistory[[i]]$commit$committer$name
+}
+saveCommitAuthor 
 
+```
 
 
 
